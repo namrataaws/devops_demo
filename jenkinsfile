@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'I am in Build Phase'
+                sh 'free -m'
+                
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                echo 'I am in Test Phase'
+                
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                echo 'I am in Deploy Phase'
+            }
+        }
+        
+        stage('Check Connectivity') {
+            steps {
+                echo 'Checking connection to google.com'
+            }
+        }
+    }
+}
