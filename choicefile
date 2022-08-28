@@ -1,12 +1,39 @@
 pipeline {
- agent any
- parameters {
-   choice(
-     name: 'State',
-     choices: ['Start', 'Stop', 'Terminate'],
-     description: 'Select the state for EC2'
-   )
- }
- 
-   
- }
+    agent any
+    parameters {
+        choice(
+            name: 'State',
+            choices: ['start', 'stop', 'terminate'],
+            description: 'Select the state for EC2'
+        )
+    }
+
+    stages{
+        stage('EC2 Instance Start'){
+            when{
+                expression { State == 'start' }
+            }
+                steps{
+                    echo "Starting EC2 instance"
+                script{
+                        sh """
+                        aws ec2 $State-instances --instance-ids i-0e6cf93d5dd3f6271 --region ap-south-1
+                        """
+                }
+    }
+}
+        stage('EC2 Instance Stop'){
+            when{
+                expression { State == 'stop' }
+            }
+                steps{
+                    echo "Starting EC2 instance"
+                script{
+                        sh """
+                        aws ec2 $State-instances --instance-ids i-0e6cf93d5dd3f6271 --region ap-south-1
+                        """
+                }
+    }
+}
+}
+}
