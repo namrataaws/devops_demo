@@ -7,29 +7,6 @@ pipeline {
      description: 'Select the state for EC2'
    )
  }
- stages {
-   stage('State') {
-                  when {
-                        expression { 
-                        return params.State == 'Start'
-                  steps {
-                      echo "Starting EC2 instance"
-                      sh "aws ec2 start-instances --instance-ids i-0e6cf93d5dd3f6271 --region ap-south-1"
-                        }
-                         }
-                           }
-                           
-                   when {
-                        expression { 
-                        return params.State == 'Stop'
-                  steps {
-                      echo "Stopping EC2 instance"
-                      sh "aws ec2 stop-instances --instance-ids i-0e6cf93d5dd3f6271 --region ap-south-1"
-                        }
-                         }
-                           }
-                         
-     }
-   }
+ 
    
  }
