@@ -35,5 +35,19 @@ pipeline {
                 }
     }
 }
+        stage('EC2 Instance Terminate') {
+            when{
+                expression{ State == 'terminate'}
+            }
+                steps{
+                    echo "Terminating EC2 instance"
+                script{
+                        sh """
+                        aws ec2 $State-instances --instance-ids i-0fb6a58fdb2e99132 --region ap-south-1
+                        """
+                }
+                }
+        }
+
 }
 }
