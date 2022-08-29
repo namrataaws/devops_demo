@@ -17,7 +17,7 @@ pipeline {
                     echo "Starting EC2 instance"
                 script{
                         sh """
-                        aws ec2 $State-instances --instance-ids i-0e6cf93d5dd3f6271 --region ap-south-1
+                        aws ec2 $State-instances --instance-ids i-0bbb3a98ed8e61948 --region ap-south-1
                         """
                 }
     }
@@ -30,7 +30,7 @@ pipeline {
                     echo "Stopping EC2 instance"
                 script{
                         sh """
-                        aws ec2 $State-instances --instance-ids i-0e6cf93d5dd3f6271 --region ap-south-1
+                        aws ec2 $State-instances --instance-ids i-0bbb3a98ed8e61948 --region ap-south-1
                         """
                 }
     }
